@@ -1,0 +1,10 @@
+.env
+.venv/
+Model\mlruns
+__pycache__/
+Dataset
+Data Cleaning&EDA\cleaned_data.csv
+Model\rf_model_Accessories.joblib
+Model\rf_model_Laptop.joblib
+Model\rf_model_Smartphone.joblib
+Model\rf_model_Tablet.joblib
