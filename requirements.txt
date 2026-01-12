@@ -17,3 +17,4 @@ statsmodels
 joblib
 pmdarima
 uvicorn
+plotly-express

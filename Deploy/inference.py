@@ -14,7 +14,7 @@ load_dotenv()
 
 app = FastAPI(title = 'Electrotech Sales Forecasting API', version = '1.0')
 
-# === Request Schema ===
+# Request Schema 
 class ForecastRequest(BaseModel):
     category: str
     start_date: date
@@ -22,7 +22,7 @@ class ForecastRequest(BaseModel):
     price: float
     season: str  # Expected: 'Winter', 'Spring', 'Summer', 'Fall'
 
-# === Feature Engineering ===
+# Feature Engineering 
 def generate_features(df: pd.DataFrame, price: float, season: str) -> pd.DataFrame:
     df['Price'] = price
     df['Season'] = season
@@ -46,7 +46,7 @@ def generate_features(df: pd.DataFrame, price: float, season: str) -> pd.DataFra
     # Drop date column before prediction
     return df.drop(columns=['ds'])
 
-# === Load Trained Model ===
+# Load Trained Model 
 ALLOWED_CATEGORIES = ["Accessories", "Laptop", "Smartphone", "Tablet"]
 
 def load_model(category: str):
@@ -60,7 +60,7 @@ def load_model(category: str):
 
     return joblib.load(model_path)
 
-# === Prediction Endpoint ===
+# Prediction Endpoint 
 @app.post("/predict")
 def predict(request: ForecastRequest):
     try:
@@ -100,7 +100,7 @@ def predict(request: ForecastRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
-# === Run Locally ===
+# Run Locally 
 if __name__ == "__main__":
     print(f"Server is on port {os.getenv('port', 3000)}")
     uvicorn.run(app, host="127.0.0.1", port=int(os.getenv('port', 3000)))
