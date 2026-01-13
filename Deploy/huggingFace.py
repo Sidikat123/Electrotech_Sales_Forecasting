@@ -14,7 +14,7 @@ for category in ["Accessories", "Laptop", "Smartphone", "Tablet"]:
         api.upload_file(
             path_or_fileobj=model_path,
             path_in_repo=repo_path,
-            repo_id="Sidikat123/Electrotech-Sales-Forecasting-Model",
+            repo_id="Sidikat123/Electrotech_Sales_Forecasting",
             repo_type="model",
         )
         print(f" Uploaded {category}")
